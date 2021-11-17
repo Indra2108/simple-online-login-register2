@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 
 // IMPORT STYLE
@@ -21,13 +21,13 @@ export default class Login extends Component {
             token: ''
         }
 
-        
+
     }
 
     saveDataStorage = async (value) => {
         try {
             await AsyncStorage.setItem('token', value)
-        } catch(error) {
+        } catch (error) {
             console.log(error)
         }
     }
@@ -45,13 +45,13 @@ export default class Login extends Component {
 
     removeDataStorage = async () => {
         try {
-          await AsyncStorage.removeItem('token')
-        } catch(error) {
-          console.log(error)
-        }  
+            await AsyncStorage.removeItem('token')
+        } catch (error) {
+            console.log(error)
+        }
         console.log('Done.')
     }
-  
+
 
     loginData = () => {
         let dataku = {
@@ -66,39 +66,39 @@ export default class Login extends Component {
             },
             body: JSON.stringify(dataku)
         })
-        .then((response) => response.json())
-        .then((mengrespon) => { 
-            console.log(mengrespon)
-            this.setState({ token: mengrespon.token })
-            this.saveDataStorage(this.state.token)
-        })
-        .catch(error => { console.log(error) })
+            .then((response) => response.json())
+            .then((mengrespon) => {
+                console.log(mengrespon)
+                this.setState({ token: mengrespon.token })
+                this.saveDataStorage(this.state.token)
+            })
+            .catch(error => { console.log(error) })
     }
 
     render() {
-        return(
+        return (
             <View style={styles.container}>
                 <View style={styles.inputbackground}>
-                    <TextInput 
-                        placeholder='Alamat Email anda' 
+                    <TextInput
+                        placeholder='Alamat Email anda'
                         style={styles.textinput}
-                        onChangeText={(email) => { this.setState({ email }) }} 
+                        onChangeText={(email) => { this.setState({ email }) }}
                     />
                 </View>
 
                 <View style={styles.inputbackground}>
-                    <TextInput 
-                        placeholder='Password baru' 
+                    <TextInput
+                        placeholder='Password baru'
                         style={styles.inputbackground}
                         secureTextEntry={this.state.hide}
-                        onChangeText={(password) => { this.setState({ password }) }} 
+                        onChangeText={(password) => { this.setState({ password }) }}
                     />
 
-                    <TouchableOpacity onPress={() => this.state.hide ? this.setState({ hide: false }) : this.setState({ hide: true })}> 
+                    <TouchableOpacity onPress={() => this.state.hide ? this.setState({ hide: false }) : this.setState({ hide: true })}>
                         <Image source={this.state.hide ? open : close} style={styles.eye} />
                     </TouchableOpacity>
                 </View>
-                    
+
                 <TouchableOpacity style={styles.tombol} onPress={() => this.loginData()}>
                     <Text style={styles.tulisantombol}>LOGIN</Text>
                 </TouchableOpacity>

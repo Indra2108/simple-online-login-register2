@@ -5,21 +5,7 @@ export default StyleSheet.create({
         flex: 1,
         padding: 20,
         justifyContent: 'center',
-    },
-    inputbackground: {
-        backgroundColor: 'yellow',
-        marginVertical: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: 10,
-    },
-    textinput: {
-
-    },
-    eye: {
-        width: 30,
-        height: 30,
+        alignItems: 'center'
     },
     tombol: {
         width: '100%',
@@ -34,13 +20,5 @@ export default StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         fontSize: 20
-    },
-    tekslogin: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        marginTop: '10%'
-    },
-    login: {
-        fontWeight: 'bold'
     },
 })

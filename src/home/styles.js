@@ -12,7 +12,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         color: 'blue',
-        backgroundColor: 'blue', 
+        backgroundColor: 'blue',
         marginTop: '10%'
     },
     tulisantombol: {
