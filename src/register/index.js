@@ -15,7 +15,7 @@ export default class Register extends Component {
             name: '',
             email: '',
             password: '',
-            age: '',
+            password_confirmation: '',
             hide: true,
         }
     }
@@ -25,12 +25,13 @@ export default class Register extends Component {
             name: this.state.name,
             email: this.state.email,
             password: this.state.password,
-            age: this.state.age
+            password_confirmation: this.state.password_confirmation
         }
 
-        fetch('https://api-nodejs-todolist.herokuapp.com/user/register', {
+        fetch('https://api-todoapp-pp.herokuapp.com/api/auth/register', {
             method: 'POST',
             headers: {
+                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(dataku)
@@ -76,14 +77,17 @@ export default class Register extends Component {
 
                 <View style={styles.inputbackground}>
                     <TextInput
-                        placeholder='Umur'
+                        placeholder='Ulangi Password'
                         style={styles.inputbackground}
-                        onChangeText={(age) => { this.setState({ age }) }}
+                        onChangeText={(password_confirmation) => { this.setState({ password_confirmation }) }}
                     />
+
+                    <TouchableOpacity onPress={() => this.state.hide ? this.setState({ hide: false }) : this.setState({ hide: true })}>
+                        <Image source={this.state.hide ? open : close} style={styles.eye} />
+                    </TouchableOpacity>
                 </View>
 
                 <TouchableOpacity style={styles.tombol} onPress={() => this.registerData()}>
-                    {/* <TouchableOpacity style={styles.tombol} onPress={() => alert('Nama: '+this.state.name +' Email: '+ this.state.email +' Password: '+ this.state.password +' Password Lagi '+ this.state.password_confirmation)}> */}
                     <Text style={styles.tulisantombol}>REGISTER</Text>
                 </TouchableOpacity>
             </View>

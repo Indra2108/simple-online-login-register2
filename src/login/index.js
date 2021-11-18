@@ -20,8 +20,6 @@ export default class Login extends Component {
             hide: true,
             token: ''
         }
-
-
     }
 
     saveDataStorage = async (value) => {
