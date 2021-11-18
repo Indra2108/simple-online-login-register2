@@ -57,9 +57,10 @@ export default class Login extends Component {
             password: this.state.password,
         }
 
-        fetch('https://api-nodejs-todolist.herokuapp.com/user/login', {
+        fetch('https://api-todoapp-pp.herokuapp.com/api/auth/login', {
             method: 'POST',
             headers: {
+                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(dataku)
