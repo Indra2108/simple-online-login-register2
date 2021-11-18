@@ -23,8 +23,9 @@ export default class Login extends Component {
     }
 
     saveDataStorage = async (value) => {
+        let dataku = JSON.stringify(value)
         try {
-            await AsyncStorage.setItem('token', value)
+            await AsyncStorage.setItem('token', dataku)
         } catch (error) {
             console.log(error)
         }
@@ -32,7 +33,7 @@ export default class Login extends Component {
 
     readDataStorage = () => {
         return AsyncStorage.getItem('token', (error, result) => {
-            let mydata = result
+            let mydata = JSON.parse(result)
             if (mydata === null) {
                 alert('Token Kosong!')
             } else {
@@ -68,7 +69,7 @@ export default class Login extends Component {
             .then((response) => response.json())
             .then((mengrespon) => {
                 console.log(mengrespon)
-                this.setState({ token: mengrespon.token })
+                this.setState({ token: mengrespon.token.original.access_token })
                 this.saveDataStorage(this.state.token)
             })
             .catch(error => { console.log(error) })
